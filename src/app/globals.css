@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #15181c;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    color: var(--foreground);
+    background: var(--background);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: #f26522;
+    color: #fff;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-semibold
+      transition-all duration-200 focus:outline-none focus-visible:ring-4
+      focus-visible:ring-netto-300/60 disabled:cursor-not-allowed disabled:opacity-60;
+  }
+
+  .btn-lg {
+    @apply px-7 py-3.5 text-base;
+  }
+
+  .btn-md {
+    @apply px-5 py-2.5 text-sm;
+  }
+
+  .btn-primary {
+    @apply btn bg-netto-600 text-white shadow-card hover:bg-netto-500 hover:shadow-lift active:translate-y-px;
+  }
+
+  .btn-dark {
+    @apply btn bg-steel-900 text-white shadow-card hover:bg-steel-800 hover:shadow-lift active:translate-y-px;
+  }
+
+  .btn-white {
+    @apply btn bg-white text-netto-700 shadow-card hover:bg-netto-50 active:translate-y-px;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-netto-600 bg-transparent text-netto-700 hover:bg-netto-600 hover:text-white;
+  }
+
+  .btn-ghost-light {
+    @apply btn border border-white/40 bg-white/10 text-white backdrop-blur hover:bg-white/20;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wider text-netto-600;
+  }
+
+  .card {
+    @apply rounded-2xl border border-steel-100 bg-white shadow-card;
+  }
+
+  .prose-netto {
+    @apply text-ink-soft leading-relaxed;
+  }
+
+  .prose-netto p {
+    @apply mb-4;
+  }
+
+  .prose-netto h2 {
+    @apply mb-4 mt-10 font-display text-2xl font-bold uppercase tracking-tight text-ink sm:text-3xl;
+  }
+
+  .prose-netto h3 {
+    @apply mb-3 mt-8 text-xl font-bold text-ink;
+  }
+
+  .prose-netto ul {
+    @apply mb-5 space-y-2;
+  }
+
+  .prose-netto ul li {
+    @apply relative pl-7;
+  }
+
+  .prose-netto ul li::before {
+    content: "";
+    @apply absolute left-0 top-2 h-3.5 w-3.5 rounded-sm bg-netto-500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
