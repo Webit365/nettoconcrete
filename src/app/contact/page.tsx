@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { ContactForm } from "@/components/ContactForm";
 import { site } from "@/lib/site";
 import { PhoneIcon, MailIcon, MapPinIcon, ClockIcon } from "@/components/Icons";
 
 export const metadata: Metadata = {
   title: "Contact — Get a Free Concrete Quote",
   description:
-    "Contact Netto Concrete Construction in Watertown, NY for a free concrete estimate. Call (315) 408-4158 or send us your project details. 24-hour emergency service available.",
+    "Contact Netto Concrete Construction in Watertown, NY for a free concrete estimate. Call (315) 408-4158 or email info@nettoconcrete.com. 24-hour emergency service available.",
   alternates: { canonical: "/contact" },
 };
 
@@ -45,59 +44,53 @@ export default function ContactPage() {
             Get In Touch
           </p>
           <h1 className="mt-4 font-display text-4xl font-bold uppercase tracking-tight text-white sm:text-5xl">
-            Request a free quote
+            Contact us
           </h1>
           <p className="mt-4 max-w-2xl text-lg text-steel-300">
-            Thank you for your interest. For a free, no-obligation estimate, fill
-            out the form or reach us directly — we look forward to hearing from
-            you soon.
+            For a free, no-obligation estimate, reach us directly by phone or
+            email — we look forward to hearing from you soon.
           </p>
         </div>
       </section>
 
       <section className="bg-white py-16">
-        <div className="container-x grid gap-12 lg:grid-cols-[1fr_0.85fr]">
-          {/* Form */}
-          <div className="card p-6 sm:p-8">
-            <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-ink">
-              Tell us about your project
-            </h2>
-            <p className="mt-1 text-sm text-ink-muted">
-              We&apos;ll get back to you with a competitive estimate.
-            </p>
-            <div className="mt-6">
-              <ContactForm />
+        <div className="container-x">
+          <div className="mx-auto max-w-2xl">
+            <div className="card p-6 sm:p-8">
+              <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-ink">
+                More info
+              </h2>
+              <p className="mt-1 text-sm text-ink-muted">
+                Thank you for your interest. For questions or a free quote, use
+                the details below.
+              </p>
+              <ul className="mt-6 space-y-5">
+                {details.map(({ icon: Icon, label, value, href }) => (
+                  <li key={label} className="flex items-start gap-4">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-netto-50 text-netto-600">
+                      <Icon className="h-6 w-6" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
+                        {label}
+                      </p>
+                      {href ? (
+                        <a
+                          href={href}
+                          className="text-lg font-semibold text-ink transition hover:text-netto-600"
+                        >
+                          {value}
+                        </a>
+                      ) : (
+                        <p className="text-lg font-medium text-ink">{value}</p>
+                      )}
+                    </div>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
 
-          {/* Details */}
-          <div>
-            <h2 className="font-display text-2xl font-bold uppercase tracking-tight text-ink">
-              More info
-            </h2>
-            <ul className="mt-6 space-y-5">
-              {details.map(({ icon: Icon, label, value, href }) => (
-                <li key={label} className="flex items-start gap-4">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-netto-50 text-netto-600">
-                    <Icon className="h-6 w-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold uppercase tracking-wide text-ink-muted">
-                      {label}
-                    </p>
-                    {href ? (
-                      <a href={href} className="text-lg font-semibold text-ink transition hover:text-netto-600">
-                        {value}
-                      </a>
-                    ) : (
-                      <p className="text-lg font-medium text-ink">{value}</p>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-8 rounded-2xl bg-netto-600 p-6 text-white">
+            <div className="mt-6 rounded-2xl bg-netto-600 p-6 text-white sm:p-8">
               <p className="font-display text-xl font-bold uppercase tracking-tight">
                 Prefer to talk now?
               </p>
